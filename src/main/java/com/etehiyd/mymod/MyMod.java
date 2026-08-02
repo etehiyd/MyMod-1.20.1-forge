@@ -1,5 +1,6 @@
 package com.etehiyd.mymod;
 
+import com.etehiyd.mymod.item.ModCreativeModeTabs;
 import com.etehiyd.mymod.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -35,7 +36,8 @@ public class MyMod
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-        ModItems.ITEMS.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in
@@ -64,9 +66,12 @@ public class MyMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        //if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-
-        //}
+/*        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.LEAD_INGOT);
+            event.accept(ModItems.LEAD_NUGGET);
+            event.accept(ModItems.NETHER_ASH);
+            event.accept(ModItems.RAW_LEAD);
+        }*/
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

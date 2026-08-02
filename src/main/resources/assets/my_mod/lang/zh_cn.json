@@ -2,5 +2,7 @@
   "item.my_mod.lead_ingot": "铅锭",
   "item.my_mod.lead_nugget": "铅粒",
   "item.my_mod.raw_lead": "粗铅",
-  "item.my_mod.nether_ash": "下界灰烬"
+  "item.my_mod.nether_ash": "下界灰烬",
+
+  "itemGroup.my_tab": "自用"
 }

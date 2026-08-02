@@ -2,5 +2,7 @@
   "item.my_mod.lead_ingot": "Lead Ingot",
   "item.my_mod.lead_nugget": "Lead Nugget",
   "item.my_mod.raw_lead": "Raw Lead",
-  "item.my_mod.nether_ash": "Nether Ash"
+  "item.my_mod.nether_ash": "Nether Ash",
+
+  "itemGroup.my_tab": "My Items"
 }
