@@ -1,5 +1,6 @@
 package com.etehiyd.mymod;
 
+import com.etehiyd.mymod.block.ModBlocks;
 import com.etehiyd.mymod.item.ModCreativeModeTabs;
 import com.etehiyd.mymod.item.ModItems;
 import com.mojang.logging.LogUtils;
@@ -38,6 +39,7 @@ public class MyMod
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in

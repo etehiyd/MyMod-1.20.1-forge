@@ -4,5 +4,12 @@
   "item.my_mod.raw_lead": "粗铅",
   "item.my_mod.nether_ash": "下界灰烬",
 
-  "itemGroup.my_tab": "自用"
+  "block.my_mod.lead_block": "铅块",
+  "block.my_mod.raw_lead_block": "粗铅块",
+  "block.my_mod.nether_ash_block": "下界灰烬块",
+  "block.my_mod.lead_ore": "铅矿石",
+  "block.my_mod.deepslate_lead_ore": "深层铅矿石",
+
+  "itemGroup.my_tab": "自用物品",
+  "itemGroup.my_blocks": "自用方块"
 }

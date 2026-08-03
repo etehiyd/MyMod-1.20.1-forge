@@ -4,5 +4,12 @@
   "item.my_mod.raw_lead": "Raw Lead",
   "item.my_mod.nether_ash": "Nether Ash",
 
-  "itemGroup.my_tab": "My Items"
+  "block.my_mod.lead_block": "Lead Block",
+  "block.my_mod.raw_lead_block": "Raw Lead Block",
+  "block.my_mod.nether_ash_block": "Nether Ash Block",
+  "block.my_mod.lead_ore": "Lead Ore",
+  "block.my_mod.deepslate_lead_ore": "Deepslate Lead Ore",
+
+  "itemGroup.my_tab": "My Items",
+  "itemGroup.my_blocks": "My Blocks"
 }
