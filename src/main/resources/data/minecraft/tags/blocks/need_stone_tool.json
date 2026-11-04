@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "my_mod:lead_block",
-    "my_mod:raw_lead_block",
-    "my_mod:lead_ore",
-    "my_mod:deepslate_lead_ore"
-  ]
-}

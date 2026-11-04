@@ -1,0 +1,13 @@
+{
+  "block.my_mod.deepslate_lead_ore": "Deepslate Lead Ore",
+  "block.my_mod.lead_block": "Lead Block",
+  "block.my_mod.lead_ore": "Lead Ore",
+  "block.my_mod.nether_ash_block": "Nether Ash Block",
+  "block.my_mod.raw_lead_block": "Raw Lead Block",
+  "item.my_mod.lead_ingot": "Lead Ingot",
+  "item.my_mod.lead_nugget": "Lead Nugget",
+  "item.my_mod.nether_ash": "Nether Ash",
+  "item.my_mod.raw_lead": "Raw Lead",
+  "itemGroup.my_blocks": "My Blocks",
+  "itemGroup.my_tab": "My Items"
+}
