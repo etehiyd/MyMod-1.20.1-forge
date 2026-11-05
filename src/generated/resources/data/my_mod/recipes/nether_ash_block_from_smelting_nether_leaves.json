@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "group": "lead_block",
+  "ingredient": {
+    "tag": "my_mod:nether_leaves"
+  },
+  "result": "my_mod:nether_ash_block"
+}

@@ -3,8 +3,12 @@ package com.etehiyd.mymod.datagen;
 import com.etehiyd.mymod.MyMod;
 import com.etehiyd.mymod.block.ModBlocks;
 import com.etehiyd.mymod.item.ModItems;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -18,12 +22,32 @@ public class ModRecipesProvider extends RecipeProvider {
         super(pOutput);
     }
 
-    public static final List<ItemLike> LEAD_INGOT = List.of(ModItems.RAW_LEAD.get(), ModBlocks.LEAD_ORE.get(), ModBlocks.DEEPSLATE_LEAD_ORE.get(), ModBlocks.NETHER_ASH_BLOCK.get());
+    public static final List<ItemLike> LEAD_ORES = List.of(ModItems.RAW_LEAD.get(), ModBlocks.LEAD_ORE.get(), ModBlocks.DEEPSLATE_LEAD_ORE.get(), ModBlocks.NETHER_ASH_BLOCK.get());
+    public static final List<ItemLike> NETHER_ASH = List.of(ModItems.NETHER_ASH.get());
+
+    public static final TagKey<Item> NETHER_GRASSES = TagKey.create(
+            Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("my_mod", "nether_grasses")
+    );
+
+    public static final TagKey<Item> NETHER_LEAVES = TagKey.create(
+            Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath("my_mod", "nether_leaves")
+    );
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        oreSmelting(pWriter, LEAD_INGOT, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7F, 200, "lead_ingot");
-        oreBlasting(pWriter, LEAD_INGOT, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7F, 100, "lead_ingot");
+        oreSmelting(pWriter, LEAD_ORES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7F, 200, "lead_ingot");
+        oreBlasting(pWriter, LEAD_ORES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7F, 100, "lead_ingot");
+
+        oreSmelting(pWriter, NETHER_ASH, RecipeCategory.MISC, ModItems.LEAD_NUGGET.get(), 0.2F, 200, "lead_nugget");
+        oreBlasting(pWriter, NETHER_ASH, RecipeCategory.MISC, ModItems.LEAD_NUGGET.get(), 0.2F, 100, "lead_nugget");
+
+        oreSmelting(pWriter, NETHER_GRASSES, RecipeCategory.MISC, ModItems.NETHER_ASH.get(), 0.1F, 200, "nether_ash");
+        oreBlasting(pWriter, NETHER_GRASSES, RecipeCategory.MISC, ModItems.NETHER_ASH.get(), 0.1F, 100, "nether_ash");
+
+        oreSmelting(pWriter, NETHER_LEAVES, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_ASH_BLOCK.get(), 0.2F, 200, "lead_block");
+        oreBlasting(pWriter, NETHER_LEAVES, RecipeCategory.BUILDING_BLOCKS, ModBlocks.NETHER_ASH_BLOCK.get(), 0.2F, 100, "lead_block");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,  ModBlocks.LEAD_BLOCK.get())
                 .pattern("###")
@@ -78,12 +102,12 @@ public class ModRecipesProvider extends RecipeProvider {
                 .save(pWriter);
 
         /*nineBlockStorageRecipes(pWriter,
-                RecipeCategory.MISC, ModItems.LEAD_INGOT.get(),
+                RecipeCategory.MISC, ModItems.LEAD_ORES.get(),
                 RecipeCategory.BUILDING_BLOCKS, ModBlocks.LEAD_BLOCK.get());
 
         nineBlockStorageRecipes(pWriter,
                 RecipeCategory.MISC, ModItems.LEAD_NUGGET.get(),
-                RecipeCategory.MISC, ModItems.LEAD_INGOT.get());
+                RecipeCategory.MISC, ModItems.LEAD_ORES.get());
 
         nineBlockStorageRecipes(pWriter,
                 RecipeCategory.MISC, ModItems.RAW_LEAD.get(),
@@ -109,5 +133,22 @@ public class ModRecipesProvider extends RecipeProvider {
                     .save(pFinishedRecipeConsumer, MyMod.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
 
+    }
+
+    // 重载：原料为 tag
+    protected static void oreSmelting(Consumer<FinishedRecipe> consumer, TagKey<Item> tag, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group) {
+        oreCooking(consumer, RecipeSerializer.SMELTING_RECIPE, tag, category, result, experience, cookingTime, group, "_from_smelting");
+    }
+
+    protected static void oreBlasting(Consumer<FinishedRecipe> consumer, TagKey<Item> tag, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group) {
+        oreCooking(consumer, RecipeSerializer.BLASTING_RECIPE, tag, category, result, experience, cookingTime, group, "_from_blasting");
+    }
+
+    // 重载：tag 版本
+    protected static void oreCooking(Consumer<FinishedRecipe> consumer, RecipeSerializer<? extends AbstractCookingRecipe> serializer, TagKey<Item> tag, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group, String suffix) {
+        SimpleCookingRecipeBuilder.generic(Ingredient.of(tag), category, result, experience, cookingTime, serializer)
+                .group(group)
+                .unlockedBy(tag.location().getPath(), has(tag))
+                .save(consumer, MyMod.MOD_ID + ":" + getItemName(result) + suffix + "_" + tag.location().getPath());
     }
 }

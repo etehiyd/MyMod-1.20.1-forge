@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "my_mod:nether_ash_block_from_smelting_nether_leaves"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "nether_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "my_mod:nether_leaves"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "nether_leaves",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "my_mod:nether_ash_block_from_smelting_nether_leaves"
+    ]
+  },
+  "sends_telemetry_event": false
+}

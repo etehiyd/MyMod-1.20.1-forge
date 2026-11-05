@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "my_mod:nether_ash_from_blasting_nether_grasses"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "nether_grasses": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "my_mod:nether_grasses"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "nether_grasses",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "my_mod:nether_ash_from_blasting_nether_grasses"
+    ]
+  },
+  "sends_telemetry_event": false
+}

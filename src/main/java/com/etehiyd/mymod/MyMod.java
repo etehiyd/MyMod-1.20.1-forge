@@ -69,7 +69,7 @@ public class MyMod
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
 /*        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.LEAD_INGOT);
+            event.accept(ModItems.LEAD_ORES);
             event.accept(ModItems.LEAD_NUGGET);
             event.accept(ModItems.NETHER_ASH);
             event.accept(ModItems.RAW_LEAD);
