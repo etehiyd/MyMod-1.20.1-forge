@@ -16,4 +16,10 @@ public class ModFoods {
             .saturationMod(0.1F)
             .effect(() -> new MobEffectInstance(MobEffects.POISON, 1200), 0.8F)
             .build();
+
+    public static final FoodProperties LEAD_BLOCK = new FoodProperties.Builder()
+            .nutrition(20)
+            .saturationMod(0.1F)
+            .effect(() -> new MobEffectInstance(MobEffects.HARM, 20, 9), 1.0F)
+            .build();
 }
