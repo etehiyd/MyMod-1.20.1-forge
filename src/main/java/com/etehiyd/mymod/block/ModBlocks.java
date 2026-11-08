@@ -1,7 +1,7 @@
 package com.etehiyd.mymod.block;
 
 import com.etehiyd.mymod.MyMod;
-import com.etehiyd.mymod.item.EatableBlockItem;
+import com.etehiyd.mymod.item.LeadBlockItem;
 import com.etehiyd.mymod.item.ModFoods;
 import com.etehiyd.mymod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -23,7 +23,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LEAD_BLOCK = registerBlockWithCustomItem("lead_block",
             () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 6.0F).requiresCorrectToolForDrops()),
-            (block, properties) -> new EatableBlockItem(block, properties.food(ModFoods.LEAD_BLOCK)));
+            (block, properties) -> new LeadBlockItem(block, properties.food(ModFoods.LEAD_BLOCK)));
 
     public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block", () -> new Block(BlockBehaviour.Properties.of().strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> NETHER_ASH_BLOCK = registerBlock("nether_ash_block", () -> new FallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND)));
